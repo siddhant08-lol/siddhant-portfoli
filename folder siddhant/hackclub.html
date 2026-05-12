@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <link href="https://fonts.googleapis.com/css2?family=share+tech+mono&family=rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+    <title>website</title>
+
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        :root{
+            --green:#39ff14;
+            --green-dim:#1a8a00;
+            --green-dark:#od4a00;
+            --green-glow:rgba(57, 225, 20,0.15);
+            --bg:#050a05;
+            --bg2:#0a100a;
+            --bg3:#of1aof;
+            --text:#c8f0c8;
+            --text-dim:#5a8a5a;
+            --border:rgba(57,225,20,0.2);
+            --mono:'share tech mono', monospace;
+            --sans:'rajdhani',sans-serif;
+        }
+        html{scroll-behavior:smooth;}
+        body{
+            background:var(--bg);
+            color:var(--text);
+            font-family: var(--sans);
+            font-size:16px;
+            line-height:1.7;
+            overflow-x:hidden;
+        
+        }
+        ::-webkit-scrollbar {width:4px;}
+        ::-webkit-scrollbar-track{background:var(--bg)}
+        ::-webkit-scrollbar-thumb{background:var(--green-dim); border-radius: 2px;}
+        body::before{
+            content:'';
+            position:fixed;
+            inset:0;
+            background:repeating-linear-gradient(0deg,transparent,transparent 2px, rgba(0,0,0,0.03)2px,rgba(0,0,0,0.03)4px);
+            pointer-events: none;
+            z-index:9999;
+        
+        }
+        nav{
+            position: fixed;
+            top:0; left:0; right:0;
+            z-index:100;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:1rem 3rem;
+            background: rgba(5,10,5,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom:1px solid var(--border);
+
+        }
+        .nav-logo{
+            font-family:var(--mono);
+            font: size 1.1rem;
+            color:var(--green);
+            text-decoration:none ;
+            letter-spacing: 2px;
+
+        }
+        .nav-logo span { color: var(--text-dim);}
+            .nav-link {display: flex; gap: 2rem; list-style: none;}
+        .nav-links a{ 
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+            position: relative;
+
+        }
+        .nav-links a:before{
+            content:'> ';
+            color: var(--green);
+            opacity: 0;
+            transition: opacity 0.2s;
+
+        }
+        .nav-links a:hover{
+            color:var(--green);
+        }
+        .nav-links a:hover{
+            color:var(--green);}
+            .nav-link a:hover::before{
+                opacity:1;
+            }
+            #hero{
+                min-height:100vh;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                padding:0 3rem;
+                position:relative;
+                overflow:hidden;
+
+            }
+            .hero-grid{
+                position:absolute;
+                inset:0;
+                background-image:linear-gradient(var(--border)1px, transparent 1px),
+                linear-gradient(90deg,var(--border) 1px, transparent 1px);
+                background-size:60px 60px;
+                mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%, transparent 100%);
+
+            }
+            .hero-content{position:relative; max-width: 800px;}
+            .hero-tag{
+                font-family:var(--mono);
+                font-size:0.8rem;
+                color:var(--green);
+                letter-spacing: 4px;
+                text-transform: uppercase;
+                margin-bottom: 1.5rem;
+                display:flex;
+                align-items: center;
+                gap:0.75rem;
+
+            }
+            .hero-tag::before{ 
+                content:'';
+                width:40px;
+                height: 1px;
+                background: var(--green);
+                display: inline-block;
+
+        }
+        .hero-name{
+            font-family: var(--sans);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1;
+            color:#fff;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+
+        }
+        .hero-name.accent{ 
+            color:var(--green)}
+            .hero-title{  
+                 font-family:var(--mono);
+                 font-size: 1.1rem;
+                 color:var(--text-dim);
+                margin-bottom:2rem;
+            min-height:1.5rem;
+                            }
+            .cursor{
+                display:inline-block;
+                width:2px;
+                height:1.1em;
+                background:var(--green);
+                vertical-align:middle;
+                margin-left: 2px;
+                animation: blink 1s step-end infinite;
+            }                
+            @keyframes blink{0%, 100%{opacity:1}50% {opacity:0}}
+            .hero-desc{
+                font-size: 1rem;
+                color:var(--text-dim);
+                max-width: 500px;
+                margin-bottom: 2.5rem;
+                line-height: 1.8;
+
+            }
+            .hero-btns{display:flex; gap:1rem; flex-wrap: wrap;}
+            .btn{  
+                font-family: var(--mono); 
+                font-size: 0.8rem;
+                letter-spacing:2px;
+                text-transform: uppercase;
+                padding:0.75rem 1.75rem;
+                text-decoration: none;
+                border:1px solid var(--green);
+                color:var(--green);
+                background:transparent;
+                cursor: pointer;
+                transition: all 0.2s;
+                position: relative;
+                overflow: hidden;
+            }
+            .btn::before{
+                content: '';
+                position: absolute;
+                inset:0;
+                background:var(--green);
+                transform: translatex(-101%);
+                transition: transform 0.2s;
+                z-index: 0;
+                
+            }
+                .btn-hover::before{transform: translateX(0);}
+                .btn:hover{color:var(--bg)}
+                .btn span{ position: relative; z-index:1;}
+                 .btn-ghost{
+                    border-color:var(--border);
+                    color:var(--text-dim);
+
+                 }
+                .btn-ghost::before{background:var(--bg3);}
+                .btn-ghost:hover{ color:var(--text);}
+                section{ padding:6rem 3rem;}
+                .section-header{ margin-bottom: 3rem;}
+                .section-num{ 
+                    font-family: var(--mono);
+                    font-size: 0.75rem;
+                    color:var(--green);
+                    letter-spacing: 4px;
+                    display:block;
+                    margin-bottom:0.5rem;
+                
+                }
+                .section-tittle{ 
+                    font-family: var(--sans);
+                    font-size: 2.5rem;
+                    font-weight:700;
+                    color:#fff;
+                    letter-spacing: -0.5px;
+                    position: relative;
+                    display:inline-block;
+                    
+                }
+                .section-tittle::after{
+                    content:'';
+                    position:absolute;
+                    bottom:-8px;
+                    left:0;
+                    width:50px;
+                    height:2px;
+                    background: var(--green);
+                }
+            @media (max-width:768px){
+                nav{
+                    padding:1rem 1.5rem;
+                } 
+                .nav-links{
+                    display:none;
+                } 
+                section{
+                    padding:4rem 1.5rem;
+                }
+                #hero{
+                    padding:0 1.5rem;
+                }   
+                .hero-name{
+                    font-size:3rem;
+
+                }
+
+            }
+</style>
+</head>
+<nav>
+    <a href="#hero"
+    class="nav-logo">&lt;<span>dev</span>&gt;</a>
+    <ul class=""nav-links">  
+        <Li> <a href="#about">ABOUT</a></Li>
+        <li><a href="#skills">SKILLs</a></li>
+        <Li><a href="#projects">projects</a></Li>
+        <li><a href="#contact">contact/a></li>
+
+    </ul>
+</nav>
+<section id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+<div class="hero-tag">
+    free for work
+</div> 
+<h1 class="hero-content">
+     <span class="accent">siddhant</span><br>
+     here.
+</h1>
+<P class="hero-title" id="typewriter">
+    <span class="cursor"></span>
+</P>
+<p class="hero-desc">
+    a trying to be web developer who try to build clean, functional,
+    and beautiful digital experieneces.
+</p>
+<div class="hero-btns">
+    <a href="#project" class="btn">
+        <span>view projects</span>
+
+    </a>
+    <a href="#contact" class="btn-ghost">
+        <span>get in touch</span>
+
+    </a>
+
+</div>
+</div>
+</section>
+<script>
+    const phrases=[
+        'web developer',
+        'problem slover',
+
+    ];
+    let pi=0;
+    let ci=0;
+    let deleting=false;
+    const tw= document.getElementById('typewriter');
+    function type(){
+        const cur= phrases[pi];
+        if(!deleting){
+            tw.innerHTML=cur,slice(0,ci + 1) +
+'<span class="cursor"></span>';
+ci++;
+if(ci=== cur.length){
+    deleting=true;
+    setTimeout(type, 1800);
+    return;
+
+}
+
+        }else{
+            tw.innerHTML= cur,slice(0,ci - 1)+'<span class="cursor"></span>';
+            ci--;
+            if(ci === 0){
+                deleting = false;
+                pi = (pi + 1)% phrases.length;
+
+            }
+        }
+        setTimeout(type, deleting ? 60:100);
+            
+        }
+    type();
+</script>
+
+            
+
+    
+    
+</body>
+</html>
