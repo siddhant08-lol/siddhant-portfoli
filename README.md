@@ -7,4 +7,9 @@ Technology used:
 - Css 
 - Js
 
-demo:https://website-personall.netlify.app/
+demo:https://website-personall.netlify.app/  
+
+
+
+
+note:the link of the website got suspended due to some reason use the demo link.thnx
