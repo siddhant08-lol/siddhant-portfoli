@@ -6,3 +6,5 @@ Technology used:
 - Html 
 - Css 
 - Js
+
+demo:https://website-personall.netlify.app/
